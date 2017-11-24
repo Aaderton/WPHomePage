@@ -1,6 +1,8 @@
 <?php get_header(); ?>
 <!-- Intro Header -->
 <header class="intro">
+  <img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>"
+  width="<?php echo get_custom_header()->width; ?>" alt="Banner Image" />
     <div class="intro-body">
         <div class="container">
                 <div class="row">

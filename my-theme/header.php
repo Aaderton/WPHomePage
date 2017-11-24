@@ -7,7 +7,7 @@
     <title><?php bloginfo('name'); ?></title>
     <?php wp_head(); ?>
 </head>
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body <?php body_class(); ?> id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
@@ -15,9 +15,18 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">
-                    <span class="light">Aatu</span> Pekkanen
-                </a>
+                <?php
+                   wp_nav_menu(array(
+                   'theme_location'    => 'secondary',
+                   'container'       => '',
+                   'container_id'    => '',
+                   'container_class' => '',
+                   'menu_id'         => false,
+                   'menu_class'      => 'navbar-brand page-scroll',
+                   'depth'           => 0,
+                   'fallback_cb'     => false
+                   ));
+                   ?>
             </div>
             <!-- Establish the navigation -->
             <?php

@@ -45,6 +45,7 @@ if ( ! function_exists( 'my_theme_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
     add_theme_support('menus');
 		register_nav_menu('primary', 'Primary Header Navigation');
+		register_nav_menu('secondary', 'Secondary Header Navigation');
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments
@@ -63,6 +64,12 @@ if ( ! function_exists( 'my_theme_setup' ) ) :
 			'default-color' => 'ffffff',
 			'default-image' => '',
 		) ) );
+
+		// Set up the WordPress core custom header feature.
+		add_theme_support('custom-header');
+
+		// Set up post format featured
+		add_theme_support('post-formats');
 
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
