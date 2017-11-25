@@ -5,10 +5,10 @@
  ?>
 <?php get_header(); ?>
 <!-- Intro Header, get content-banner template -->
-<?php get_template_part('content','banner') ?>
+<?php get_template_part('content','banner'); ?>
    <div id=content>
     <!-- About Section, get content-about template -->
-      <?php get_template_part('content','about') ?>
+      <?php get_template_part('content','about'); ?>
     <!-- Portfolio Section -->
     <section id="portfolio" class="content-section text-center">
         <div class="portfolio-section">

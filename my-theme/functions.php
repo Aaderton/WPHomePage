@@ -120,6 +120,17 @@ function my_theme_widgets_init() {
 add_action( 'widgets_init', 'my_theme_widgets_init' );
 
 /**
+ * Head function
+		*function my_theme_remove_version() {
+		*		return '';
+		*}
+		*add_filter('the_generator', 'my_theme_remove_version');
+*/
+
+// Remove version number
+remove_action('wp_head', 'wp_generator');
+
+/**
  * Enqueue scripts and styles.
  */
 function my_theme_scripts() {
