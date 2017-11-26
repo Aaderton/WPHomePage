@@ -22,7 +22,6 @@
                       <?php endif;?>
                           <h2><?php the_title(); ?></h2>
                           <p><?php the_content(); ?></p>
-                          <P>Testi testi testi</p>
                   <?php endwhile;
                   // end of the loop
                   wp_reset_postdata(); ?>

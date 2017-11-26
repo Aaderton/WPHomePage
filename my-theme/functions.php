@@ -131,8 +131,50 @@ add_action( 'widgets_init', 'my_theme_widgets_init' );
 remove_action('wp_head', 'wp_generator');
 
 /**
- * Enqueue scripts and styles.
- */
+	* Custom Post Type
+*/
+function my_theme_custom_post_type() {
+	$labels = array(
+			'name' => 'Portfolio',
+			'singular_name' => 'Portfolio Item',
+			'add_new' => 'Add Item',
+			'all_items' => 'All Items',
+			'add_new_item' => 'Add Portfolio Item',
+			'edit_item' => 'Edit Portfolio Item',
+			'new_item' => 'New Item',
+			'view_item' => 'View Item',
+			'search_item' => 'Search Portfolio',
+			'not_found' => 'No items found',
+			'not_found_in_trash' => 'No items found in trash',
+			'parent_item_colon' => 'Parent item'
+	);
+	$args = array(
+			'labels' => $labels,
+			'public' => true,
+			'has-archive' => true,
+			'publicly_queryable' => true,
+			'query_var' => true,
+			'rewrite' => true,
+			'capability_type' => 'post',
+			'hierarchial' => false,
+			'supports' => array(
+					'title',
+					'editor',
+					'excerpt',
+					'thumbnail',
+					'revisions'
+			),
+			'taxonomies' => array('category','post_tag'),
+			'menu_position' => 5,
+			'exclude_from_search' => false
+	);
+	register_post_type('portfolio',$args);
+}
+add_action('init','my_theme_custom_post_type');
+
+/**
+	* Enqueue scripts and styles.
+*/
 function my_theme_scripts() {
 	wp_enqueue_style('my_theme_bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css');
   wp_enqueue_style('my_theme_font_awesome', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css');

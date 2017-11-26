@@ -9,5 +9,6 @@
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?> id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+  <div class="page">
     <!-- Navigation -->
     <?php get_template_part('content','navigation'); ?>
