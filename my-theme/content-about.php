@@ -15,11 +15,15 @@
                 if ( $about_posts->have_posts() ) :
                 // the loop
                   while ( $about_posts->have_posts() ) : $about_posts->the_post();
-                      if (has_post_thumbnail() ):?>
-                          <div class="col-xs-12">
-                          <?php the_post_thumbnail('medium') ?>
-                          </div>
-                      <?php endif;?>
+                    if (has_post_thumbnail( $post->ID ) ):
+                      $image = wp_get_attachment_image_src (
+                          get_post_thumbnail_id( $post->ID ),
+                          'single-post-thumbnail'
+                        ); ?>
+                      <div class="xs-12">
+                          <img src="<?php echo $image[0]; ?>" class="img-circle center-block" height="375" width="325"/>
+                      </div>
+                  <?php endif;?>
                           <h2><?php the_title(); ?></h2>
                           <p><?php the_content(); ?></p>
                   <?php endwhile;
