@@ -506,9 +506,14 @@ textarea {
 		}
 }
 
+.btn {
+	color: #fff;
+	background-color: #F07818;
+}
+
 .btn:hover {
-    color: #fff;
-    background-color: #F07818;
+    color: #000;
+    background-color: #fff;
 }
 
 footer {

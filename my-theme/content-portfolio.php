@@ -13,25 +13,28 @@
                 if ( $args->have_posts() ) :
                 // the loop
                   while ( $args->have_posts() ) : $args->the_post(); ?>
+                  <?php  $footerText = get_field('footer_text');?>
+                  <?php  $image = get_field('image');?>
+                  <?php  $subHeading = get_field('sub_heading');?>
+
                     <div class="col-xs-12 col-md-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><?php the_title(); ?></h3>
                             </div>
-                            <?php if (has_post_thumbnail( $post->ID ) ): ?>
-                                <?php $image = wp_get_attachment_image_src (
-                                    get_post_thumbnail_id( $post->ID ),
-                                    'single-post-thumbnail'
-                                  ); ?>
-                                <div class="panel-image hide-panel-body">
-                                    <img src="<?php echo $image[0]; ?>" class="panel-image-preview"/>
-                                </div>
-                            <?php endif;?>
+                            <div class="panel-image hide-panel-body">
+                                <img src="<?php echo $image ?>" class="panel-image-preview"/>
+                            </div>
                             <div class="panel-body">
+                                <h4><?php echo $subHeading ?></h4>
                                 <?php the_content(); ?>
+                                <?php if( $link = get_field('link') ) :?>
+                                  <p><a target="_blank" href="<?php echo $link?>">
+                                  Link to the work</a></p>
+                                <?php endif; ?>
                             </div>
                             <div class="panel-footer text-center">
-                                Click the image for more info
+                                <?php echo $footerText ?>
                             </div>
                         </div>
                     </div>
