@@ -24,9 +24,6 @@ if ( ! function_exists( 'my_theme_setup' ) ) :
 		 */
 		load_theme_textdomain( 'my-theme', get_template_directory() . '/languages' );
 
-		// Add default posts and comments RSS feed links to head.
-		add_theme_support( 'automatic-feed-links' );
-
 		/*
 		 * Let WordPress manage the document title.
 		 * By adding theme support, we declare that this theme does not use a
@@ -119,21 +116,18 @@ function my_theme_widgets_init() {
 }
 add_action( 'widgets_init', 'my_theme_widgets_init' );
 
-/**
- * Head function
-		*function my_theme_remove_version() {
-		*		return '';
-		*}
-		*add_filter('the_generator', 'my_theme_remove_version');
-*/
 
 // Remove version number
-remove_action('wp_head', 'wp_generator');
+		function my_theme_remove_version() {
+				return '';
+		}
+		add_filter('the_generator', 'my_theme_remove_version');
 
 /**
 	* Custom Post Type
 */
 function my_theme_custom_post_type() {
+	// Portfolio post type
 	$labels = array(
 			'name' => 'Portfolio',
 			'singular_name' => 'Portfolio Item',
@@ -168,7 +162,43 @@ function my_theme_custom_post_type() {
 			'menu_position' => 5,
 			'exclude_from_search' => false
 	);
+	// Social links post type
+	$labels_social = array(
+			'name' => 'Social',
+			'singular_name' => 'Social Item',
+			'add_new' => 'Add Item',
+			'all_items' => 'All Items',
+			'add_new_item' => 'Add Social Item',
+			'edit_item' => 'Edit Social Item',
+			'new_item' => 'New Item',
+			'view_item' => 'View Item',
+			'search_item' => 'Search Social Links',
+			'not_found' => 'No items found',
+			'not_found_in_trash' => 'No items found in trash',
+			'parent_item_colon' => 'Parent item'
+	);
+	$args_social = array(
+			'labels' => $labels_social,
+			'public' => true,
+			'has-archive' => true,
+			'publicly_queryable' => true,
+			'query_var' => true,
+			'rewrite' => true,
+			'capability_type' => 'post',
+			'hierarchial' => false,
+			'supports' => array(
+					'title',
+					'editor',
+					'excerpt',
+					'thumbnail',
+					'revisions'
+			),
+			'taxonomies' => array('category','post_tag'),
+			'menu_position' => 5,
+			'exclude_from_search' => false
+	);
 	register_post_type('portfolio',$args);
+	register_post_type('social',$args_social);
 }
 add_action('init','my_theme_custom_post_type');
 

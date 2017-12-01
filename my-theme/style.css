@@ -263,7 +263,7 @@ p {
     line-height: 1.5;
 }
 
-h1, h2, li a {
+h1, h2, li a{
 		color: #F07818;
 }
 
@@ -284,19 +284,12 @@ textarea {
     resize: none;
 }
 
-#error-404 {
-		height: 100%;
-		width: 100%;
-		display: block;
-		background-color: #F8F8F8;
-}
-
 .light {
     font-weight: 400;
 }
 
 .navbar-default {
-    color: #fff;
+    color: #F07818;
     margin-bottom: 0;
     border-bottom: 1px solid #000;
     text-transform: uppercase;
